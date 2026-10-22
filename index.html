@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>안태건 ♥ 이유진 결혼합니다</title>
+  <meta name="description" content="Become Us, More Us. 2026년 12월 13일 오후 3시, 서울대학교 호암교수회관 베리타스홀" />
+  <!-- 카카오톡·문자 공유 미리보기 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="안태건 ♥ 이유진 결혼합니다" />
+  <meta property="og:description" content="2026. 12. 13 (일) 오후 3시 · 서울대학교 호암교수회관 베리타스홀" />
+  <meta property="og:image" content="https://yznny.github.io/wedding/images/og.jpg" />
+  <meta name="theme-color" content="#f6efe7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Gochi+Hand&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 편지봉투 인트로 -->
+  <div class="intro" id="intro" role="dialog" aria-label="청첩장 열기">
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="env-card">
+        <p class="hand">You're<br />invited</p>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="env-seal" aria-hidden="true"></div>
+    </div>
+    <div class="env-info">
+      <p class="env-sub">TO THE WEDDING OF<br /><b data-f="groom.name"></b> &amp; <b data-f="bride.name"></b></p>
+      <p class="env-date" id="envFront"></p>
+    </div>
+    <button class="open-btn" id="openBtn">tap to open</button>
+  </div>
+
+  <main class="card">
+    <!-- 커버 -->
+    <section class="cover">
+      <div class="cover-photo" id="coverPhoto"></div>
+      <div class="cover-text">
+        <h1 class="message" id="message"></h1>
+        <span class="hairline" aria-hidden="true"></span>
+        <p class="cover-names"><span data-f="groom.name"></span><i>&amp;</i><span data-f="bride.name"></span></p>
+        <p class="cover-date" id="coverDate"></p>
+        <p class="cover-venue"><span data-f="venue.name"></span> <span data-f="venue.hall"></span></p>
+      </div>
+    </section>
+
+    <!-- 인사말 -->
+    <section class="sec reveal">
+      <h2 class="en-title">We Are Getting Married!</h2>
+      <p class="sec-sub">소중한 분들을 초대합니다</p>
+      <p class="greeting" id="greeting"></p>
+      <figure class="photo-frame" id="photoFrame"></figure>
+      <div class="families">
+        <div><p class="parents" id="groomParents"></p><p class="who">신랑 <b data-f="groom.name"></b></p></div>
+        <div><p class="parents" id="brideParents"></p><p class="who">신부 <b data-f="bride.name"></b></p></div>
+      </div>
+      <div class="contact-row" id="contactRow"></div>
+    </section>
+
+    <!-- 예식 정보 + 달력 -->
+    <section class="sec tint reveal">
+      <h2 class="en-title">Save the Date</h2>
+      <p class="sec-sub">예식 안내</p>
+      <p class="when" id="when"></p>
+      <p class="where"><b data-f="venue.name"></b><span class="rule"></span><b data-f="venue.hall"></b></p>
+      <div class="calendar-card">
+        <p class="cal-head" id="calHead"></p>
+        <table class="calendar" id="calendar"></table>
+      </div>
+      <div class="countdown" id="countdown"></div>
+      <p class="dday" id="dday"></p>
+      <a class="btn ghost" id="gcal" target="_blank" rel="noopener">구글 캘린더에 추가</a>
+    </section>
+
+    <!-- 갤러리 -->
+    <section class="sec reveal" id="gallerySec" hidden>
+      <h2 class="en-title">Gallery</h2>
+      <p class="sec-sub">사진첩</p>
+      <div class="gallery" id="gallery"></div>
+      <button class="btn ghost more-btn" id="galleryMore" hidden></button>
+    </section>
+
+    <!-- 오시는 길 -->
+    <section class="sec reveal">
+      <h2 class="en-title">Location</h2>
+      <p class="sec-sub">오시는 길</p>
+      <p class="venue-name"><span data-f="venue.name"></span> <span data-f="venue.hall"></span></p>
+      <p class="venue-addr" data-f="venue.address"></p>
+      <div class="map-links">
+        <a class="btn" id="naverMap" target="_blank" rel="noopener">네이버 지도</a>
+        <a class="btn" id="kakaoMap" target="_blank" rel="noopener">카카오맵</a>
+        <a class="btn" id="tmap" target="_blank" rel="noopener">티맵</a>
+      </div>
+      <button class="link-btn" id="copyAddr">내비게이션 주소 복사</button>
+      <div class="directions" id="directions"></div>
+    </section>
+
+    <!-- 방명록 -->
+    <section class="sec tint reveal" id="guestbookSec" hidden>
+      <h2 class="en-title">Guestbook</h2>
+      <p class="sec-sub">축하의 마음을 전해주세요</p>
+      <form class="gb-form" id="gbForm">
+        <input id="gbName" maxlength="12" placeholder="이름" required />
+        <textarea id="gbMessage" maxlength="300" rows="3" placeholder="두 사람에게 전하고 싶은 말" required></textarea>
+        <div class="gb-foot"><span id="gbCount">0 / 300</span><button class="btn" type="submit" id="gbSubmit">남기기</button></div>
+      </form>
+      <ul class="gb-list" id="gbList"></ul>
+      <button class="btn ghost more-btn" id="gbMore" hidden>더보기</button>
+    </section>
+
+    <!-- 마음 전하실 곳 -->
+    <section class="sec reveal" id="accountSec">
+      <h2 class="en-title">With Love</h2>
+      <p class="sec-sub">마음 전하실 곳</p>
+      <p class="muted">참석이 어려우신 분들을 위해 기재했습니다.<br />너그러운 마음으로 양해 부탁드립니다.</p>
+      <details class="acc" id="accGroomWrap"><summary>신랑측</summary><div id="accGroom"></div></details>
+      <details class="acc" id="accBrideWrap"><summary>신부측</summary><div id="accBride"></div></details>
+    </section>
+
+    <!-- 마무리 -->
+    <section class="sec tint reveal closing">
+      <div class="closing-photo" id="closingPhoto"></div>
+      <h2 class="en-title">Thank you</h2>
+      <p class="sec-sub">감사합니다</p>
+      <p class="muted">귀한 걸음으로 축복해 주시는 모든 분들께<br />진심으로 감사드립니다.</p>
+      <a class="btn" id="rsvp" target="_blank" rel="noopener" hidden>참석 의사 전달하기</a>
+      <div class="share-row">
+        <button class="btn ghost" id="copyLink">링크 복사</button>
+      </div>
+      <p class="sign" id="sign"></p>
+    </section>
+  </main>
+
+  <button class="bgm" id="bgmBtn" hidden aria-label="배경음악">♪</button>
+  <audio id="bgm" loop></audio>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <img alt="" />
+    <button class="lb-close" aria-label="닫기">×</button>
+    <button class="lb-prev" aria-label="이전 사진">‹</button>
+    <button class="lb-next" aria-label="다음 사진">›</button>
+    <p class="lb-count" id="lbCount"></p>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="config.js"></script>
+  <script src="art.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

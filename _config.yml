@@ -1,0 +1,6 @@
+# GitHub Pages 설정: 아래 파일은 청첩장 사이트 주소로는 열리지 않게 제외
+exclude:
+  - README.md
+  - qr
+  - apps-script
+  - .gitignore

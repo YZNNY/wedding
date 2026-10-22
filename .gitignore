@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+.claude/
+pictures/
+청첩장_인쇄버전/
